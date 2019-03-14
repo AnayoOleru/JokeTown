@@ -1,0 +1,42 @@
+{
+  "name": "joketown",
+  "version": "1.0.0",
+  "description": "jokes",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./build/server/app",
+    "prestart": "npm run build",
+    "prebuild": "rm -rf ./build",
+    "test": " nyc ---reporter=html --reporter=text mocha --timeout 30000 --exit --require babel-register server/test/* && npm run coverage",
+    "build": "babel ./ -d build --ignore node_modules/ --presets=env --source-maps inline --copy-files",
+    "dev-start": "babel-watch ./server/app.js",
+    "migrate": "sequelize db:migrate "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnayoOleru/JokeTown.git"
+  },
+  "keywords": [
+    "jokes"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AnayoOleru/JokeTown/issues"
+  },
+  "homepage": "https://github.com/AnayoOleru/JokeTown#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "pg": "^7.8.2",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^5.1.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-watch": "^7.0.0",
+    "dotenv": "^7.0.0"
+  }
+}
